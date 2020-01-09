@@ -16,7 +16,7 @@ PROYECTO ALTERNATIVO
 --------------------------------------
 Desarrollar un programa que
 permita a un profesional 
-calcular su impuesto a la renta 2018.
+calcular su impuesto a la renta 2019.
 
 Considerar que el profesional 
 solo tiene ingresos de 4ta y 

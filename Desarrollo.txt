@@ -10,9 +10,9 @@ Clase 01
 
 Clase 02
 ----------------------------
-1.- 
-2.- 
-3.- 
+1.- Patron DTO
+2.- Patron MVC
+3.- Alcance de Clase y Alcance de Instancia
 4.- 
 5.- 
 6.- 

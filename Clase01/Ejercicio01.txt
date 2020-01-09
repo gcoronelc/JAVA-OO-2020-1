@@ -1,8 +1,27 @@
+-- ========================
+-- EJERCICIO 01
+-- ========================
+
 Proy-MCD-MCM-KMB-V2
 - MALLQUI
 
-- Proyectomcmmcd
-Fabrizio Castillo
-Kevin Rosado
-Giro Pinto
+Proyectomcmmcd
+- Fabrizio Castillo
+- Kevin Rosado
+- Giro Pinto
+
+MARCELA
+- Rodas Marcela 
+- Rivera 
+- Huaman
+
+PALOMINO
+- Palomino
+
+-- ========================
+-- EJERCICIO 02
+-- ========================
+
+
+
 
