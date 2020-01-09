@@ -10,17 +10,17 @@ Clase 01
 
 Clase 02
 ----------------------------
-1.- Miembros de Clase 
-2.- DTO
-3.- Proyecto aplicativo
-4.- Sobrecarga
-5.- Manejo de paneles
-6.- Proyecto aplicativo
+1.- 
+2.- 
+3.- 
+4.- 
+5.- 
+6.- 
 
 
 Clase 03
 ----------------------------------
-1.- Alcance de clase y de instancia
-2.- Ejemplos
-3.- Herencia
+1.- 
+2.- 
+3.- 
 
