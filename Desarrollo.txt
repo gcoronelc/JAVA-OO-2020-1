@@ -1,0 +1,26 @@
+Clase 01
+-------------------
+1.- Clonar Repositorio
+2.- Revisar Java
+3.- Estructuras Secuenciales
+4.- Estrucuturas condicionales
+5.- Estrucuturas de bucle
+6.- Programación en capas y servicios
+7.- Clases y objetos
+
+Clase 02
+----------------------------
+1.- Miembros de Clase 
+2.- DTO
+3.- Proyecto aplicativo
+4.- Sobrecarga
+5.- Manejo de paneles
+6.- Proyecto aplicativo
+
+
+Clase 03
+----------------------------------
+1.- Alcance de clase y de instancia
+2.- Ejemplos
+3.- Herencia
+
