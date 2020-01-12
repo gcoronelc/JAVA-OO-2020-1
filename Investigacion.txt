@@ -27,7 +27,7 @@ ingresos, exonaraciones y impuesto
 a pagar.
 
 Consultar información en la SUNAT.
--------------------------------
+Simulador: http://renta.sunat.gob.pe/simuladores/cuarta_quinta
 
 
 
