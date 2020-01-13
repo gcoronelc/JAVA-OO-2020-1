@@ -3,8 +3,8 @@
 # PROGRAMADOR JAVA
 
 - Lugar: SistemasUNI
-- Horario: MARTES y JUEVES DE 08 a 14 Horas
-- Inicio: 09-ENE-2020
+- Horario: LUNES, MIERCOLES Y VIERNES DE 08 a 14 Horas
+- Inicio: 13-ENE-2020
 - Duración: 24 Horas
 - Dirección: https://goo.gl/maps/98vwAt9NZMU2
 - Youtube: https://www.youtube.com/watch?v=EKlwF12-l9Y&list=PLIRq7nByT7aRuBgD4UVRjrcUZFM8Fkbut
@@ -18,6 +18,7 @@
 - Correo del curso: egcc.uni@gmail.com
 - Canal Youtube: https://www.youtube.com/c/DesarrollaSoftware
 - UDEMY: https://github.com/gcoronelc/UDEMY
+- Grupo de WS: https://chat.whatsapp.com/H6BBebNDZHEAqAk6gTU5ZS
 
 # YUTUBE
 
