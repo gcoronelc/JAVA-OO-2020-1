@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pe.uni.colegioapp.view;
 
-import pe.uni.colegioapp.service.MateService;
+import pe.uni.colegioapp.controller.MateController;
 
 /**
  *
@@ -176,8 +171,8 @@ public class FactorialView extends javax.swing.JInternalFrame {
 		// Datos
 		int num = Integer.parseInt(txtNumero.getText());
 		// Proceso
-		MateService service = new MateService();
-		long fact = service.factorial(num);
+		MateController controller = new MateController();
+		long fact = controller.factorial(num);
 		// Reporte
 		txtFactorial.setText("" + fact);
   }//GEN-LAST:event_btnProcesarActionPerformed
