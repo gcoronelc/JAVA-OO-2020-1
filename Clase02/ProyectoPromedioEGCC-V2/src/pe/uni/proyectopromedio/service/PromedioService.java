@@ -2,8 +2,27 @@ package pe.uni.proyectopromedio.service;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import pe.uni.proyectopromedio.dto.PromedioDto;
 
 public class PromedioService {
+	
+	public PromedioDto procesar(PromedioDto dto){
+		// Variables
+		float menorNota, promedio;
+		String condicion;
+		// Proceso
+		menorNota = menor(dto.getNota1(), dto.getNota2(), 
+								dto.getNota3(), dto.getNota4());
+		promedio = promediar(dto.getNota1(), dto.getNota2(), 
+								dto.getNota3(), dto.getNota4() );
+		condicion = condicion(promedio);
+		// Reporte
+		dto.setNotaMenor(menorNota);
+		dto.setPromedio(promedio);
+		dto.setCondicion(condicion);
+		return dto;
+	} // Fin de procesar
+		
 
 	/**
 	 * Halla el menor de 4 notas
@@ -14,7 +33,7 @@ public class PromedioService {
 	 * @param nota4 almacena nota4
 	 * @return Retorna el menor de 4 notas
 	 */
-	public float menor(float nota1, float nota2, float nota3, float nota4) {
+	private float menor(float nota1, float nota2, float nota3, float nota4) {
 		// Variables
 		float menor;
 		// Proceso
@@ -41,7 +60,7 @@ public class PromedioService {
 	 * @param nota4 almacena nota4
 	 * @return retorna promedio de notas
 	 */
-	public float promediar(float nota1, float nota2, float nota3, float nota4) {
+	private float promediar(float nota1, float nota2, float nota3, float nota4) {
 		//variables
 		float promedio = 0;
 		float menor = 0;
@@ -63,7 +82,7 @@ public class PromedioService {
 	 * @param nota promedio de alumno
 	 * @return Retorna condición
 	 */
-	public String condicion(float nota) {
+	private String condicion(float nota) {
 		//VARIABLE
 		String cond = null;
 		//PROCESO
@@ -78,4 +97,4 @@ public class PromedioService {
 		return cond;
 	}
 
-}
+} // Fin de PromedioService

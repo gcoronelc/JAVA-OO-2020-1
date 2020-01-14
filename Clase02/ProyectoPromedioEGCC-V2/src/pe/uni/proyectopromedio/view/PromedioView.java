@@ -5,6 +5,7 @@
  */
 package pe.uni.proyectopromedio.view;
 
+import pe.uni.proyectopromedio.dto.PromedioDto;
 import pe.uni.proyectopromedio.service.PromedioService;
 
 /**
@@ -60,12 +61,6 @@ public class PromedioView extends javax.swing.JFrame {
     jLabel3.setText("Nota 3:");
 
     jLabel4.setText("Nota 4:");
-
-    txtNota3.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtNota3ActionPerformed(evt);
-      }
-    });
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -136,11 +131,6 @@ public class PromedioView extends javax.swing.JFrame {
     txtResulCond.setBackground(new java.awt.Color(255, 255, 255));
     txtResulCond.setDisabledTextColor(new java.awt.Color(0, 51, 153));
     txtResulCond.setEnabled(false);
-    txtResulCond.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtResulCondActionPerformed(evt);
-      }
-    });
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -258,14 +248,6 @@ public class PromedioView extends javax.swing.JFrame {
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNota3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNota3ActionPerformed
-			// TODO add your handling code here:
-    }//GEN-LAST:event_txtNota3ActionPerformed
-
-    private void txtResulCondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResulCondActionPerformed
-			// TODO add your handling code here:
-    }//GEN-LAST:event_txtResulCondActionPerformed
-
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
 			System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
@@ -274,24 +256,23 @@ public class PromedioView extends javax.swing.JFrame {
 			// Entorno
 			btnProcesar.setEnabled(false);
 			btnReiniciar.setEnabled(true);
-
 			//Datos
 			float n1 = Float.parseFloat(txtNota1.getText());
 			float n2 = Float.parseFloat(txtNota2.getText());
 			float n3 = Float.parseFloat(txtNota3.getText());
 			float n4 = Float.parseFloat(txtNota4.getText());
-
 			// Proceso
+			PromedioDto dto = new PromedioDto();
+			dto.setNota1(n1);
+			dto.setNota2(n2);
+			dto.setNota3(n3);
+			dto.setNota4(n4);
 			PromedioService service = new PromedioService();
-			float menor = service.menor(n1, n2, n3, n4);
-			float promedio = service.promediar(n1, n2, n3, n4);
-			String condicion = service.condicion(promedio);
-
+			dto = service.procesar(dto);
 			// Reporte
-			txtResulMenor.setText("" + menor);
-			txtResulProm.setText("" + promedio);
-			txtResulCond.setText(condicion);
-
+			txtResulMenor.setText("" + dto.getNotaMenor());
+			txtResulProm.setText("" + dto.getPromedio());
+			txtResulCond.setText(dto.getCondicion());
     }//GEN-LAST:event_btnProcesarActionPerformed
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed

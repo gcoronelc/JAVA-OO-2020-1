@@ -150,9 +150,6 @@
         <Component class="javax.swing.JTextField" name="txtNota2">
         </Component>
         <Component class="javax.swing.JTextField" name="txtNota3">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNota3ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNota4">
         </Component>
@@ -270,9 +267,6 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtResulCondActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
