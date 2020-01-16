@@ -47,4 +47,10 @@ public class ProductoDto {
 		this.precio = precio;
 	}
 
+	@Override
+	public String toString() {
+		return producto;
+	}
+
+	
 }

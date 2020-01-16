@@ -1,21 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pe.uni.ventasuni.view;
 
-/**
- *
- * @author Alumno
- */
+import java.util.List;
+import javax.swing.JOptionPane;
+import pe.uni.ventasuni.controller.VentasController;
+import pe.uni.ventasuni.dto.ProductoDto;
+import pe.uni.ventasuni.dto.VentaDto;
+
 public class VentasView extends javax.swing.JFrame {
+
+	private VentasController controller;
+	private boolean estoyOcupado;
 
 	/**
 	 * Creates new form VentasView
 	 */
 	public VentasView() {
 		initComponents();
+		controller = new VentasController();
+		estoyOcupado = false;
+		cargarCategorias();
+	}
+	
+	private void cargarCategorias(){
+		// Variables
+		String[] categorias;
+		// Proceso
+		estoyOcupado = true;
+		categorias = controller.traerCategorias();
+		cboCategoria.removeAllItems();
+		for (String categoria : categorias) {
+			cboCategoria.addItem(categoria);
+		}
+		cboCategoria.setSelectedIndex(-1);
+		estoyOcupado = false;
 	}
 
 	/**
@@ -52,12 +69,21 @@ public class VentasView extends javax.swing.JFrame {
 
     cboCategoria.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
     cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+    cboCategoria.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cboCategoriaActionPerformed(evt);
+      }
+    });
 
     jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
     jLabel2.setText("Producto:");
 
     cboProducto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-    cboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+    cboProducto.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cboProductoActionPerformed(evt);
+      }
+    });
 
     jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
     jLabel3.setText("Precio:");
@@ -123,10 +149,20 @@ public class VentasView extends javax.swing.JFrame {
     btnProcesar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
     btnProcesar.setForeground(new java.awt.Color(255, 255, 255));
     btnProcesar.setText("Procesar");
+    btnProcesar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnProcesarActionPerformed(evt);
+      }
+    });
 
     btnSalir.setBackground(new java.awt.Color(204, 204, 204));
     btnSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
     btnSalir.setText("Salir");
+    btnSalir.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSalirActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -222,6 +258,79 @@ public class VentasView extends javax.swing.JFrame {
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
+  private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
+    // Control
+		if( estoyOcupado || cboCategoria.getSelectedIndex() == -1){
+			return;
+		}
+		estoyOcupado = true;
+		// Variables
+		List<ProductoDto> productos;
+		String categoria;
+		// Proceso
+		txtPrecio.setText("");
+		categoria = cboCategoria.getSelectedItem().toString();
+		productos = controller.traerProductos(categoria);
+		cboProducto.removeAllItems();
+		for (ProductoDto producto : productos) {
+			cboProducto.addItem(producto);
+		}
+		cboProducto.setSelectedIndex(-1);
+		estoyOcupado = false;
+  }//GEN-LAST:event_cboCategoriaActionPerformed
+
+  private void cboProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProductoActionPerformed
+		// Control
+		if( estoyOcupado || cboProducto.getSelectedIndex() == -1){
+			return;
+		}
+		estoyOcupado = true;
+		// Variables    
+		ProductoDto item;
+		// Proceso
+		item = (ProductoDto) cboProducto.getSelectedItem();
+		txtPrecio.setText("" + item.getPrecio());
+		estoyOcupado = false;
+  }//GEN-LAST:event_cboProductoActionPerformed
+
+  private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    System.exit(0);
+  }//GEN-LAST:event_btnSalirActionPerformed
+
+  private void btnProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarActionPerformed
+    // Control
+		if(cboCategoria.getSelectedIndex()== -1 || 
+						cboProducto.getSelectedIndex()== -1){
+			return;
+		}
+		// Variables
+		VentaDto ventaDto;
+		ProductoDto productoDto;
+		int cantidad;
+		List<VentaDto> ventas;
+		// Datos
+		productoDto = (ProductoDto) cboProducto.getSelectedItem();
+		cantidad = Integer.parseInt(txtCantidad.getText());
+		// Proceso
+		ventaDto = new VentaDto();
+		ventaDto.setCategoria(productoDto.getCategoria());
+		ventaDto.setProducto(productoDto.getProducto());
+		ventaDto.setPrecio(productoDto.getPrecio());
+		ventaDto.setCantidad(cantidad);
+		controller.procesarVenta(ventaDto);
+		// Reporte
+		JOptionPane.showMessageDialog(rootPane, "Proceso Ok.",
+						"MENSAJE",JOptionPane.INFORMATION_MESSAGE);
+		// Limpiar Controles
+		estoyOcupado = true;
+		cboCategoria.setSelectedIndex(-1);
+		ventas = controller.traerVentas();
+		cboProducto.removeAllItems();
+		txtPrecio.setText("");
+		txtCantidad.setText("");
+		estoyOcupado = false;
+  }//GEN-LAST:event_btnProcesarActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -264,7 +373,7 @@ public class VentasView extends javax.swing.JFrame {
   private javax.swing.JButton btnSalir;
   private javax.swing.JButton btnVentas;
   private javax.swing.JComboBox<String> cboCategoria;
-  private javax.swing.JComboBox<String> cboProducto;
+  private javax.swing.JComboBox<ProductoDto> cboProducto;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
