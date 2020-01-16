@@ -3,6 +3,7 @@ package pe.uni.ventasuni.service;
 import java.util.ArrayList;
 import java.util.List;
 import pe.uni.ventasuni.dto.ProductoDto;
+import pe.uni.ventasuni.dto.VentaDto;
 
 /**
  *
@@ -33,7 +34,16 @@ public class VentaService {
 		}
 		// Reporte
 		return lista;
+	} // getProductos
+	
+	public void grabar(VentaDto dto){
+		// Proceso
+		dto.setImporte(dto.getPrecio() * dto.getCantidad());
+		Data.VENTAS.add(dto);
 	}
 	
+	public List<VentaDto> getVentas(){
+		return Data.VENTAS;
+	}
 
 } // VentaService
