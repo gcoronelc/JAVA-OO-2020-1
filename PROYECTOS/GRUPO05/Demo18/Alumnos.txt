@@ -1,0 +1,17 @@
+101#Juan Perez#Programador Java#16#Aprobado
+105#Claudia Silva#Excel II#17.0#Aprobado
+102#Karina Florez#Windows 10#16.0#Aprobado
+106#Luis#Java POO#16.0#Aprobado
+109#Pedro Perez#Java POO#16.0#Aprobado
+104#Luis Garcia#Programador Java#8.0#Desaprobado
+100#dfsd#sdf#20.0#Aprobado
+100#juan#sl#14.0#Aprobado
+100#juan#sl#14.0#Aprobado
+100#juan#sl#14.0#Aprobado
+101#anibal#sql#13.0#Desaprobado
+101#anibal#sql#13.0#Desaprobado
+101#anibal#sql#13.0#Desaprobado
+101#anibal#sql#13.0#Desaprobado
+1550#Maria Anyela#Gestion Redes Sociales#16.0#Aprobado
+2#Jose Anibal Hernandez#JAVA PROGRAMACION#18.0#Aprobado
+1#jose anibal#sql#14.0#Aprobado
