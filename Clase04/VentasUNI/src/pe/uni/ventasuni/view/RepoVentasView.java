@@ -217,6 +217,16 @@ public class RepoVentasView extends javax.swing.JDialog {
   }//GEN-LAST:event_btnBuscarActionPerformed
 
   private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+		// Control
+		if( ventas == null || ventas.isEmpty()){
+			JOptionPane.showMessageDialog(
+							rootPane, 
+							"No existe ventas.",
+							"ERROR",
+							JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		try {
       // Archivo destino
       String archivo;
