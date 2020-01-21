@@ -34,5 +34,9 @@ public class VentasController {
 	public List<VentaDto> traerVentas(){
 		return service.getVentas();
 	}
+
+	public List<VentaDto> traerVentas(String categoria) {
+		return service.getVentas(categoria);
+	}
 	
 }

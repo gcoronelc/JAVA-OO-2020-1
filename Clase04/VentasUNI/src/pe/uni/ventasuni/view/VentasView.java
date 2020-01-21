@@ -1,6 +1,5 @@
 package pe.uni.ventasuni.view;
 
-import java.awt.HeadlessException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import pe.uni.ventasuni.controller.VentasController;
@@ -20,6 +19,7 @@ public class VentasView extends javax.swing.JFrame {
 		controller = new VentasController();
 		estoyOcupado = false;
 		cargarCategorias();
+		this.setLocationRelativeTo(null);
 	}
 	
 	private void cargarCategorias(){
@@ -192,6 +192,11 @@ public class VentasView extends javax.swing.JFrame {
     btnVentas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
     btnVentas.setForeground(new java.awt.Color(153, 255, 204));
     btnVentas.setText("Ventas");
+    btnVentas.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnVentasActionPerformed(evt);
+      }
+    });
 
     btnResumen1.setBackground(new java.awt.Color(51, 51, 51));
     btnResumen1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -343,6 +348,11 @@ public class VentasView extends javax.swing.JFrame {
 							JOptionPane.ERROR_MESSAGE);
 		} 
   }//GEN-LAST:event_btnProcesarActionPerformed
+
+  private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+    RepoVentasView view = new RepoVentasView(this, true);
+		view.setVisible(true);
+  }//GEN-LAST:event_btnVentasActionPerformed
 
 	/**
 	 * @param args the command line arguments
