@@ -5,8 +5,17 @@
  */
 package pe.uni.ventasuni.view;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import pe.uni.ventasuni.controller.VentasController;
 import pe.uni.ventasuni.dto.VentaDto;
 import pe.uni.ventasuni.service.VentaService;
@@ -80,6 +89,11 @@ public class RepoVentasView extends javax.swing.JDialog {
 
     btnExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/uni/ventasuni/img/excel.png"))); // NOI18N
     btnExcel.setToolTipText("Descargar en Excel.");
+    btnExcel.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExcelActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -201,6 +215,54 @@ public class RepoVentasView extends javax.swing.JDialog {
 			tabla.addRow(rowData);
 		}
   }//GEN-LAST:event_btnBuscarActionPerformed
+
+  private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+		try {
+      // Archivo destino
+      String archivo;
+      // Seleccionar archivo destino
+      JFileChooser fileChooser = new JFileChooser();
+      fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+      int result = fileChooser.showOpenDialog(null);
+      if (result == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        archivo = selectedFile.getAbsolutePath();
+      } else {
+        return;
+      }
+
+      // Proceso de crear el archivo excel
+      // Paso 1: Crear el libro
+      String plantilla = "/pe/uni/ventasuni/plantillas/ventas.xls";
+      InputStream inp = Class.class.getResourceAsStream(plantilla);
+      HSSFWorkbook objWB = new HSSFWorkbook(inp);
+      // Paso 2: Crear la hoja
+      HSSFSheet hoja = objWB.getSheetAt(0);
+      // Cargar data a la hoja
+      HSSFRow filaData = null;
+			int fila = 1;
+      for (VentaDto dto: ventas) {
+				fila++;
+        filaData = hoja.createRow(fila);
+        filaData.createCell(0).setCellValue(dto.getCategoria());
+        filaData.createCell(1).setCellValue(dto.getProducto());
+        filaData.createCell(2).setCellValue(dto.getPrecio());
+        filaData.createCell(3).setCellValue(dto.getCantidad());
+        filaData.createCell(4).setCellValue(dto.getImporte());
+      }
+      // Crear el archivo
+      File objFile = new File(archivo);
+      FileOutputStream archivoSalida = new FileOutputStream(objFile);
+      objWB.write(archivoSalida);
+      archivoSalida.close();
+      JOptionPane.showMessageDialog(null, "Proceso ejecutado correctamente.");
+    } catch (IOException ex) {
+      ex.printStackTrace();
+      JOptionPane.showMessageDialog(null, "No se tiene permiso para crear el archivo.");
+    }
+		
+		
+  }//GEN-LAST:event_btnExcelActionPerformed
 
 	/**
 	 * @param args the command line arguments
